@@ -17,6 +17,7 @@ module SquarespaceApi
       @connection = Faraday.new do |connection|
         connection.headers = DEFAULT_HEADERS
         connection.response :json
+        connection.adapter(Faraday.default_adapter)
       end
 
       initialize_app_session if config.access_token
