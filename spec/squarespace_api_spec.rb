@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe SquarespaceApi do
   it 'has a version number' do
-    expect(SquarespaceApi::VERSION).to eq('0.0.5')
+    expect(SquarespaceApi::VERSION).to eq('0.0.6')
   end
 
   context 'configure' do

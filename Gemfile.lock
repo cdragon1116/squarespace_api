@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    squarespace_api (0.0.5)
+    squarespace_api (0.0.6)
       faraday
       faraday_middleware
       json
