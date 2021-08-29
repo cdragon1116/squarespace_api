@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
   spec.name        = "squarespace_api"
-  spec.version     = "0.0.1"
+  spec.version     = "0.0.3"
   spec.summary     = "Ruby gem interacting with the Squarespace API."
   spec.description = "Ruby gem interacting with the Squarespace API."
   spec.authors     = ["cdragon"]
   spec.email       = "cdragon1116@gmail.com"
-  spec.homepage    = "https://github.com/cdragon1116/squarespace"
+  spec.homepage    = "https://github.com/cdragon1116/squarespace_api"
   spec.license     = "MIT"
   spec.files         = `git ls-files -z`.split("\x0")
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
