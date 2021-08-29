@@ -25,6 +25,8 @@ gem 'squarespace_api'
 - Thread Safety Usage
 
 ```ruby
+require 'squarespace_api'
+
 client = SquarespaceApi::Client.new(
   SquarespaceApi::Config.new(
     access_token: 'your access token'
@@ -50,7 +52,7 @@ client.website
 
 ## ResourceGroups
 
-- Orders
+- [Orders](https://developers.squarespace.com/commerce-apis/orders-overview)
 
 ```ruby
 # get one page
@@ -73,7 +75,7 @@ client.orders.create(params)
 client.orders.fulfil(id, params)
 ```
 
-- Products
+- [Products](https://developers.squarespace.com/commerce-apis/products-overview)
 
 ```ruby
 client.products.all
@@ -86,7 +88,6 @@ client.products.delete(id)
 ```
 
 - ProductImages
-
 
 ```ruby
 # Noted that Path parameters should be passed in body params.
