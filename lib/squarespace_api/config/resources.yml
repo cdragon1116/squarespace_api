@@ -1,3 +1,0 @@
-website:
-  path: 'authorization/website'
-  class: 'SquarespaceApi::Resources::Website'

@@ -2,14 +2,8 @@ require 'spec_helper'
 require 'squarespace_api/resource_group'
 
 class DummyResrouce < SquarespaceApi::ResourceGroup
+  PATH = 'commerce/dummy'.freeze
   allowed_actions :all, :find, :find_by_ids, :create, :delete, :update
-
-  def initialize(connection)
-    super
-    @resource_config = {
-      'resources_path' => 'commerce/dummy',
-    }
-  end
 
   def parse_collection(response)
     response.body['dummy']

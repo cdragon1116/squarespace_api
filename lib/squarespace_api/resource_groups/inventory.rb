@@ -1,6 +1,7 @@
 module SquarespaceApi
   module ResourceGroups
     class Inventory < ResourceGroup
+      PATH = 'commerce/inventory'.freeze
       allowed_actions :all, :update, :find_by_ids
 
       def find(id)

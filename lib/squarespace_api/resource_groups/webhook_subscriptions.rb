@@ -1,6 +1,7 @@
 module SquarespaceApi
   module ResourceGroups
     class WebhookSubscriptions < ResourceGroup
+      PATH = 'webhook_subscriptions'.freeze
       allowed_actions :all, :create, :update, :find, :delete
 
       def send_test_notification(id = nil, params)

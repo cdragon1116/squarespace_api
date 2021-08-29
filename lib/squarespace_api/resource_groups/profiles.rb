@@ -1,6 +1,7 @@
 module SquarespaceApi
   module ResourceGroups
     class Profiles < ResourceGroup
+      PATH = 'profiles'.freeze
       allowed_actions :all, :create
 
       def find(id)

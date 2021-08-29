@@ -1,6 +1,7 @@
 module SquarespaceApi
   module ResourceGroups
     class ProductImages < ResourceGroup
+      PATH = 'commerce/products/:product_id/images'.freeze
       allowed_actions :update, :delete
 
       def upload(file_path, params = {})

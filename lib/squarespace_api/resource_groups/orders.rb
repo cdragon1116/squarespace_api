@@ -1,6 +1,7 @@
 module SquarespaceApi
   module ResourceGroups
     class Orders < ResourceGroup
+      PATH = 'commerce/orders'.freeze
       allowed_actions :create, :all, :find
 
       def fulfil(id, params = {})

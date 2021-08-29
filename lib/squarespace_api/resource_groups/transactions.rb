@@ -1,6 +1,7 @@
 module SquarespaceApi
   module ResourceGroups
     class Transactions < ResourceGroup
+      PATH = 'commerce/transactions'.freeze
       allowed_actions :all, :find_by_ids
 
       def find(id)

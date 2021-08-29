@@ -2,23 +2,18 @@ module SquarespaceApi
   class ResourceGroup
     def initialize(connection:)
       @connection = connection
-      @resource_config = load_config
     end
 
     protected
 
     attr_reader :connection, :resource, :resource_path
 
-    def load_config
-      ResourceGroups::Config[self.class.name.split('::').last.to_snakecase]
-    end
-
     def resource_path
-      @resource_config['resources_path'] + "/:id"
+      resources_path + "/:id"
     end
 
     def resources_path
-      @resource_config['resources_path']
+      self.class::PATH
     end
 
     def parse(response)

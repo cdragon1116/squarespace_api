@@ -1,10 +1,7 @@
 require 'spec_helper'
 
 class Dummy < SquarespaceApi::Resource
-  def initialize(connection)
-    super
-    @resource_config = { 'path' => 'commerce/dummy' }
-  end
+  PATH = 'commerce/dummy'
 end
 
 describe SquarespaceApi::Resource do
