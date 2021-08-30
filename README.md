@@ -20,7 +20,7 @@ gem 'squarespace_api'
 
 
 
-## Simple Example Usage
+## Quick Example
 
 - Thread Safety Usage
 
@@ -90,7 +90,7 @@ client.products.delete(id)
 - ProductImages
 
 ```ruby
-# Noted that Path parameters should be passed in body params.
+# Noted that Path parameters should be passed in params.
 client.product_images.upload(file_path, { product_id: product_id })
 client.product_images.status(id, { product_id: product_id })
 client.product_images.order(id, { product_id: product_id, afterImageId: 'otherImageId' })
@@ -100,7 +100,7 @@ client.product_images.update(id, { product_id: product_id, altText: 'my_picture'
 - ProductVariants
 
 ```ruby
-# Noted that Path parameters should be passed in body params.
+# Noted that Path parameters should be passed in params.
 client.product_variants.create({ product_id: product_id })
 client.product_variants.update(id, { sku: 'P1234', product_id: product_id })
 ```
@@ -122,6 +122,7 @@ client.inventory_adjustments.create(params)
 ```
 
 - Profiles
+
 ```ruby
 client.profiles.all
 client.profiles.find(id)
@@ -129,6 +130,7 @@ client.profiles.create(params)
 ```
 
 - StorePages
+
 ```ruby
 client.store_pages.all
 ```
@@ -153,7 +155,8 @@ client.webhook_subscriptions.send_test_notification(id, params)
 client.webhook_subscriptions.rotate_secret(id)
 ```
 
-## Resource
+
+## Single Resource
 
 - Website
 
@@ -161,9 +164,11 @@ client.webhook_subscriptions.rotate_secret(id)
 client.website
 ```
 
-##  Oauth App
+## Oauth App
 
-- ENV
+### Configuration
+
+configure your oauth cerdentials in ENV:
 
 ```ruby
 # Auto load ENV
@@ -171,30 +176,44 @@ SQUARESPACE_CLIENT_ID = 'your client id'
 SQUARESPACE_CLIENT_SECRET = 'your client secret'
 ```
 
+Or configure in your initializer:
+
+```ruby
+SquarespaceApi.configure do |c|
+  c.client_id = 'your client id'
+  c.client_secret = 'your client secret'
+end
+```
+
+If you have multiple apps, consider thread safe usage:
+
+```ruby
+client = SquarespaceApi::Client.new(
+  SquarespaceApi::Config.new(
+    client_id: 'your client id',
+    client_secret: 'your client secret'
+  )
+)
+```
+
+### Oauth Actions
+
 - Construct Oauth Url
 
 ```ruby
-client.build_oauth_authorize_url(
+SquarespaceApi::Client.new.build_oauth_authorize_url(
   redirect_url: 'https://api.test.com/squarespace',
   scope: 'website.orders,website.orders.read',
   state: '1234',
   access_type: "offline"
 )
+
 => 'https://login.squarespace.com/api/1/login/oauth/provider/authorize?client_id=&redirect_url=https://api.test.com/squarespace&scope=website.orders,website.orders.read&state=1234&access_type=offline'
 ```
 
 - Request Access Token
 
 ```ruby
-client = SquarespaceApi::Client.new(
-  SquarespaceApi::Config.new(
-    # your can specifize application credentials if you have multiple apps
-    # otherwise it'll auto load env
-    client_id: 'your client id',
-    client_secret: 'your client secret'
-  )
-)
-
 # request access token
 client.tokens.create(
   code: 'code sent from Squaerspace',
@@ -203,6 +222,7 @@ client.tokens.create(
 ```
 
 - Request Refresh Token
+
 ```ruby
 client.tokens.create(
   refresh_token: 'some_refresh_token',
