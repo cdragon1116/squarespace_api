@@ -6,13 +6,14 @@ module SquarespaceApi
     module All
       def all(params = {}, &_block)
         PaginatedFetch.build(params) do |paginated_params|
-          response = parse_collection(
-            connection
+          query_result = connection
             .get(UriComponentBuidler.construct(resources_path, paginated_params), params: paginated_params)
-          )
+          response = parse_collection(query_result)
+          pagination = parse_pagination(query_result)
+
           return response unless block_given?
           yield(response)
-          response
+          pagination
         end
       end
 
