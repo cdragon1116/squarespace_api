@@ -22,6 +22,33 @@ describe SquarespaceApi::ResourceGroupActions do
 
     it { expect(resource.all(status: 'pending')).to eq([]) }
     it { expect(resource.where(status: 'pending')).to eq([]) }
+
+    context "when pagination exists" do
+      before do
+        stub_request(:get, "https://api.squarespace.com/1.0/commerce/dummy?status=pending")
+          .to_return(status: 200, body: {
+            'dummy' => [{ 'id' => 1 }],
+            'pagination' => { "hasNextPage" => true, 'nextPageCursor' => "cursor"
+            }
+          }.to_json)
+
+        stub_request(:get, "https://api.squarespace.com/1.0/commerce/dummy?cursor=cursor")
+          .to_return(status: 200, body: {
+            'dummy' => [{ 'id' => 2 }],
+            'pagination' => { "hasNextPage" => false }
+          }.to_json)
+      end
+
+      it "should return all orders" do
+        orders = []
+
+        resource.all(status: 'pending') do |new_orders|
+          orders += new_orders
+        end
+
+        expect(orders).to eq([{ 'id' => 1 }, { 'id' => 2 }])
+      end
+    end
   end
 
   describe '#find' do

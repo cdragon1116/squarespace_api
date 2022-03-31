@@ -24,6 +24,10 @@ module SquarespaceApi
       raise 'This method should be implemented in a subclass.'
     end
 
+    def parse_pagination(response)
+      response.body['pagination']
+    end
+
     class << self
       def allowed_actions(*args)
         args.each do |action|
