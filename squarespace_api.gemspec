@@ -13,12 +13,12 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = '>= 1.8.6'
 
-  spec.add_development_dependency "rspec"
-  spec.add_development_dependency "pry"
-  spec.add_development_dependency "webmock"
-  spec.add_development_dependency 'rake', '>= 11.2.2'
+  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "pry", '~> 0.13.1'
+  spec.add_development_dependency "webmock", '~> 3.14'
+  spec.add_development_dependency 'rake', '~> 11.2'
 
-  spec.add_dependency "faraday", '>= 1.7.0'
-  spec.add_dependency "faraday_middleware", '>= 1.1.0'
-  spec.add_dependency "json", '>= 2.5.1'
+  spec.add_dependency "faraday", '~> 1.7'
+  spec.add_dependency "faraday_middleware", '~> 1.1'
+  spec.add_dependency "json", '~> 2.5'
 end
