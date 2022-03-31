@@ -1,6 +1,6 @@
 # Squarespace Api
 
-[![Gem Version](https://badge.fury.io/rb/squarespace_api.svg)](https://rubygems.org/gems/squarespace_api)
+[![Gem Version](https://badge.fury.io/rb/squarespace_api.svg)](https://rubygems.org/gems/squarespace_api) ![Spec Status](https://app.travis-ci.com/cdragon1116/squarespace_api.svg?branch=master)
 
 
 Ruby interface to the [Squarespace API](https://developers.squarespace.com/commerce-apis/overview).
@@ -229,3 +229,16 @@ client.tokens.create(
   grant_type: "refresh_token"
 )
 ```
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/cdragon1116/squarespace_api. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+
+## License
+
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+
+## Code of Conduct
+
+Everyone interacting in the Squarespace API project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/cdragon1116/squarespace_api/blob/master/CODE_OF_CONDUCT.md).
+
