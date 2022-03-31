@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name        = "squarespace_api"
-  spec.version     = "0.0.7"
+  spec.version     = "1.0.0"
   spec.summary     = "Ruby gem interacting with the Squarespace API."
   spec.description = "Ruby gem interacting with the Squarespace API."
   spec.authors     = ["cdragon"]
